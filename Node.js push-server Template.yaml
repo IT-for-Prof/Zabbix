@@ -1,0 +1,688 @@
+zabbix_export:
+  version: '5.4'
+  date: '2022-01-25T10:39:59Z'
+  groups:
+    -
+      uuid: a571c0d144b14fd4a87a9d9b2aa9fcd6
+      name: Templates/Applications
+  templates:
+    -
+      uuid: c14bdda883af4dfb82fbbb8fbfacf9a0
+      template: 'Node.js push-server'
+      name: 'Node.js push-server'
+      groups:
+        -
+          name: Templates/Applications
+      items:
+        -
+          uuid: dd90d5cac3c24e05b357aa4d74ee1647
+          name: 'push-server port 8010 LISTEN state'
+          key: 'net.tcp.listen[8010]'
+          history: 1d
+          tags:
+            -
+              tag: Application
+              value: push-server
+          triggers:
+            -
+              uuid: 016d1a6af61f4acd9418455e5b04f2cb
+              expression: 'last(/Node.js push-server/net.tcp.listen[8010])=0'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: 'last(/Node.js push-server/net.tcp.listen[8010])=1'
+              name: 'push-server port 8010 not LISTEN state'
+              priority: AVERAGE
+        -
+          uuid: e4b2247fbdc84bf5866c1b35e4093fe0
+          name: 'push-server port 8011 LISTEN state'
+          key: 'net.tcp.listen[8011]'
+          history: 1d
+          tags:
+            -
+              tag: Application
+              value: push-server
+          triggers:
+            -
+              uuid: db5ad53b41654d818401a2b181b79880
+              expression: 'last(/Node.js push-server/net.tcp.listen[8011])=0'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: 'last(/Node.js push-server/net.tcp.listen[8011])=1'
+              name: 'push-server port 8011 not LISTEN state'
+              priority: AVERAGE
+        -
+          uuid: 8e4e6c5bf5694fa7ba05089b8ccfbc25
+          name: 'push-server port 8012 LISTEN state'
+          key: 'net.tcp.listen[8012]'
+          history: 1d
+          tags:
+            -
+              tag: Application
+              value: push-server
+          triggers:
+            -
+              uuid: a04141213c124a28988d1e6832a55ef9
+              expression: 'last(/Node.js push-server/net.tcp.listen[8012])=0'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: 'last(/Node.js push-server/net.tcp.listen[8012])=1'
+              name: 'push-server port 8012 not LISTEN state'
+              priority: AVERAGE
+        -
+          uuid: 724b7eaa4f934fa8a8bb5aba2d063422
+          name: 'push-server port 8013 LISTEN state'
+          key: 'net.tcp.listen[8013]'
+          history: 1d
+          tags:
+            -
+              tag: Application
+              value: push-server
+          triggers:
+            -
+              uuid: 9f76b30f97f94f47ac76a66de075696a
+              expression: 'last(/Node.js push-server/net.tcp.listen[8013])=0'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: 'last(/Node.js push-server/net.tcp.listen[8013])=1'
+              name: 'push-server port 8013 not LISTEN state'
+              priority: AVERAGE
+        -
+          uuid: 8acd3e66cd194e3da8a2b9a58d9d3974
+          name: 'push-server port 8014 LISTEN state'
+          key: 'net.tcp.listen[8014]'
+          history: 1d
+          tags:
+            -
+              tag: Application
+              value: push-server
+          triggers:
+            -
+              uuid: e10781765061436a8553244d52995f81
+              expression: 'last(/Node.js push-server/net.tcp.listen[8014])=0'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: 'last(/Node.js push-server/net.tcp.listen[8014])=1'
+              name: 'push-server port 8014 not LISTEN state'
+              priority: AVERAGE
+        -
+          uuid: 5fccca934cc54d9fb7cd0015e99baee3
+          name: 'push-server port 8015 LISTEN state'
+          key: 'net.tcp.listen[8015]'
+          history: 1d
+          tags:
+            -
+              tag: Application
+              value: push-server
+          triggers:
+            -
+              uuid: 7a5d3ea0468e4f2b9fcb44beedd8dddb
+              expression: 'last(/Node.js push-server/net.tcp.listen[8015])=0'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: 'last(/Node.js push-server/net.tcp.listen[8015])=1'
+              name: 'push-server port 8015 not LISTEN state'
+              priority: AVERAGE
+        -
+          uuid: e03048de65bd4f219a52470cf815d02b
+          name: 'push-server port 9010 LISTEN state'
+          key: 'net.tcp.listen[9010]'
+          history: 1d
+          tags:
+            -
+              tag: Application
+              value: push-server
+          triggers:
+            -
+              uuid: b5b0ca031c6e4ddeaff14560c7569906
+              expression: 'last(/Node.js push-server/net.tcp.listen[9010])=0'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: 'last(/Node.js push-server/net.tcp.listen[9010])=1'
+              name: 'push-server port 9010 not LISTEN state'
+              priority: AVERAGE
+        -
+          uuid: 92c5939586274c32b60dbf1c79116f13
+          name: 'push-server port 9011 LISTEN state'
+          key: 'net.tcp.listen[9011]'
+          history: 1d
+          tags:
+            -
+              tag: Application
+              value: push-server
+          triggers:
+            -
+              uuid: f6b2b85b3eb2489e8f6b20fd2ad513a1
+              expression: 'last(/Node.js push-server/net.tcp.listen[9011])=0'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: 'last(/Node.js push-server/net.tcp.listen[9011])=1'
+              name: 'push-server port 9011 not LISTEN state'
+              priority: AVERAGE
+        -
+          uuid: 1d19384724b448fc8290c706c082685f
+          name: 'Num of push-server processes'
+          key: push-server_processes
+          history: 1d
+          tags:
+            -
+              tag: Application
+              value: push-server
+          triggers:
+            -
+              uuid: d9d743b85253484f8d12ec5545b6aa47
+              expression: 'last(/Node.js push-server/push-server_processes)<>{$NORM.NUM.PROC}'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: 'last(/Node.js push-server/push-server_processes)={$NORM.NUM.PROC}'
+              name: 'Number of push-server processes changed'
+              priority: AVERAGE
+              manual_close: 'YES'
+        -
+          uuid: f3f319a8b40e4fc6ba410c1bf51b4988
+          name: 'Server Count'
+          type: DEPENDENT
+          key: server.count
+          delay: '0'
+          history: 1h
+          units: '!servers'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - '$[:].processUniqueId'
+            -
+              type: JAVASCRIPT
+              parameters:
+                - |
+                  valueArr = JSON.parse(value);
+                  return valueArr.length;
+          master_item:
+            key: server.stat.json
+          tags:
+            -
+              tag: Application
+              value: push-server
+          triggers:
+            -
+              uuid: 4c8f8adb5041474abc576e42d9d5beff
+              expression: 'last(/Node.js push-server/server.count)<>8'
+              name: 'Server List Changed'
+              priority: WARNING
+        -
+          uuid: 40da95e9755a40788802cf74ff115e71
+          name: 'Server Stat Headers'
+          type: DEPENDENT
+          key: server.stat.headers
+          delay: '0'
+          history: 1h
+          trends: '0'
+          value_type: TEXT
+          preprocessing:
+            -
+              type: JAVASCRIPT
+              parameters:
+                - |
+                  var valueArr = value.split('\n');
+                  var headerData = [];
+                  var inHeaderData = true;
+                  for(line in valueArr) {
+                    if(valueArr[line].indexOf("pid") !== -1) {
+                      inHeaderData = false;
+                    }
+                    if(inHeaderData == true) {
+                      if(valueArr[line] != ""){
+                        headerData.push(valueArr[line]);
+                      }
+                    }
+                    
+                  }
+                  headerData.join('\n');
+                  
+                  return headerData;
+          master_item:
+            key: 'web.page.get[127.0.0.1,/server-stat/,9010]'
+          tags:
+            -
+              tag: Application
+              value: push-server
+        -
+          uuid: 4f63d58eb2ae4859857f37056f896901
+          name: 'Server Stat JSON'
+          type: DEPENDENT
+          key: server.stat.json
+          delay: '0'
+          history: 1h
+          trends: '0'
+          value_type: TEXT
+          preprocessing:
+            -
+              type: JAVASCRIPT
+              parameters:
+                - |
+                  var valueArr = value.split('\n');
+                  var jsonData = [];
+                  var inJsonData = false;
+                  for(line in valueArr) {
+                    if(valueArr[line].indexOf("pid") !== -1) {
+                     inJsonData = true;
+                    }
+                    if(inJsonData == true) {
+                      jsonData.push(valueArr[line]);
+                    }
+                    
+                  }
+                  jsonData.join('\n');
+                  
+                  return jsonData;
+          master_item:
+            key: 'web.page.get[127.0.0.1,/server-stat/,9010]'
+          tags:
+            -
+              tag: Application
+              value: push-server
+        -
+          uuid: 2f98edbc12f54d6e9d4976e897d389e7
+          name: 'Server Response Code'
+          type: DEPENDENT
+          key: server.stat.response_code
+          delay: '0'
+          history: 1h
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - 'HTTP/1.1 ([0-9]+)'
+                - \1
+            -
+              type: TRIM
+              parameters:
+                - '\s\n\r\t '
+          master_item:
+            key: server.stat.headers
+          tags:
+            -
+              tag: Application
+              value: push-server
+          triggers:
+            -
+              uuid: 7a58f507c9204c97bd84f0fe09246a89
+              expression: 'last(/Node.js push-server/server.stat.response_code)<>200'
+              name: 'Web Server Error Code Detected'
+              priority: WARNING
+              manual_close: 'YES'
+        -
+          uuid: 374827b51b71403db69fe4e76e75b87b
+          name: 'Server Stat RAW'
+          key: 'web.page.get[127.0.0.1,/server-stat/,9010]'
+          history: 1h
+          trends: '0'
+          value_type: TEXT
+          preprocessing:
+            -
+              type: JAVASCRIPT
+              parameters:
+                - |
+                  var valueArr = value.split('\n');
+                  valueArr.splice(-1,1);
+                  return valueArr.join('\n');
+          tags:
+            -
+              tag: Application
+              value: push-server
+          triggers:
+            -
+              uuid: 535412a2f8da485295df8f404162527f
+              expression: 'nodata(/Node.js push-server/web.page.get[127.0.0.1,/server-stat/,9010],10m)=1'
+              name: 'No data for Server Stat'
+              priority: HIGH
+              manual_close: 'YES'
+      discovery_rules:
+        -
+          uuid: 93a4f817cb244b898b52bcbbd4b3877e
+          name: 'Server Stat Discovery'
+          type: DEPENDENT
+          key: server.stat.discovery
+          delay: '0'
+          item_prototypes:
+            -
+              uuid: 71622c24f3c14a54b4f6998fc88df98a
+              name: '{#PUID} Channels'
+              type: DEPENDENT
+              key: 'server.channels[{#PUID}]'
+              delay: '0'
+              history: 30d
+              units: '!channels'
+              preprocessing:
+                -
+                  type: JSONPATH
+                  parameters:
+                    - '$.[?(@.processUniqueId == ''{#PUID}'')].channels'
+                -
+                  type: TRIM
+                  parameters:
+                    - '[]'
+              master_item:
+                key: server.stat.json
+              tags:
+                -
+                  tag: Application
+                  value: push-server
+            -
+              uuid: 2358dd01480240af93c19994dc252c2c
+              name: '{#PUID} Daily messages im_chatUserLeave'
+              type: DEPENDENT
+              key: 'server.daily.messages.im_chatUserLeave[{#PUID}]'
+              delay: '0'
+              history: 30d
+              units: '!messages'
+              preprocessing:
+                -
+                  type: JSONPATH
+                  parameters:
+                    - '$.[?(@.processUniqueId == ''{#PUID}'')].daily.messages.im_chatUserLeave'
+                -
+                  type: TRIM
+                  parameters:
+                    - '[]'
+              master_item:
+                key: server.stat.json
+              tags:
+                -
+                  tag: Application
+                  value: push-server
+            -
+              uuid: 836870fb65cc40d89858d54fac19db63
+              name: '{#PUID} Daily messages im_messageChat'
+              type: DEPENDENT
+              key: 'server.daily.messages.im_messageChat[{#PUID}]'
+              delay: '0'
+              history: 30d
+              units: '!messages'
+              preprocessing:
+                -
+                  type: JSONPATH
+                  parameters:
+                    - '$.[?(@.processUniqueId == ''{#PUID}'')].daily.messages.im_messageChat'
+                -
+                  type: TRIM
+                  parameters:
+                    - '[]'
+              master_item:
+                key: server.stat.json
+              tags:
+                -
+                  tag: Application
+                  value: push-server
+            -
+              uuid: 6f21571b9a7b4c27967e78519340fdde
+              name: '{#PUID} Daily messages im_messageLike'
+              type: DEPENDENT
+              key: 'server.daily.messages.im_messageLike[{#PUID}]'
+              delay: '0'
+              history: 30d
+              units: '!messages'
+              preprocessing:
+                -
+                  type: JSONPATH
+                  parameters:
+                    - '$.[?(@.processUniqueId == ''{#PUID}'')].daily.messages.im_messageLike'
+                -
+                  type: TRIM
+                  parameters:
+                    - '[]'
+              master_item:
+                key: server.stat.json
+              tags:
+                -
+                  tag: Application
+                  value: push-server
+            -
+              uuid: af26e266cd67417ebaeaf4dcb120e0e0
+              name: '{#PUID} Daily messages im_messageUpdate'
+              type: DEPENDENT
+              key: 'server.daily.messages.im_messageUpdate[{#PUID}]'
+              delay: '0'
+              history: 30d
+              units: '!messages'
+              preprocessing:
+                -
+                  type: JSONPATH
+                  parameters:
+                    - '$.[?(@.processUniqueId == ''{#PUID}'')].daily.messages.im_messageUpdate'
+                -
+                  type: TRIM
+                  parameters:
+                    - '[]'
+              master_item:
+                key: server.stat.json
+              tags:
+                -
+                  tag: Application
+                  value: push-server
+            -
+              uuid: f6d51bc4930c4bfd827f3f441b52b8de
+              name: '{#PUID} Daily messages im_readMessageChatOpponent'
+              type: DEPENDENT
+              key: 'server.daily.messages.im_readMessageChatOpponent[{#PUID}]'
+              delay: '0'
+              history: 30d
+              units: '!messages'
+              preprocessing:
+                -
+                  type: JSONPATH
+                  parameters:
+                    - '$.[?(@.processUniqueId == ''{#PUID}'')].daily.messages.im_readMessageChatOpponent'
+                -
+                  type: TRIM
+                  parameters:
+                    - '[]'
+              master_item:
+                key: server.stat.json
+              tags:
+                -
+                  tag: Application
+                  value: push-server
+            -
+              uuid: 4dfedd202c05498283df2d1a187b2af6
+              name: '{#PUID} Daily messages main_user_counter'
+              type: DEPENDENT
+              key: 'server.daily.messages.main_user_counter[{#PUID}]'
+              delay: '0'
+              history: 30d
+              units: '!messages'
+              preprocessing:
+                -
+                  type: JSONPATH
+                  parameters:
+                    - '$.[?(@.processUniqueId == ''{#PUID}'')].daily.messages.main_user_counter'
+                -
+                  type: TRIM
+                  parameters:
+                    - '[]'
+              master_item:
+                key: server.stat.json
+              tags:
+                -
+                  tag: Application
+                  value: push-server
+            -
+              uuid: a644d7a3818b4013b08987ceacd2ba46
+              name: '{#PUID} Daily messages tasks_comment_add'
+              type: DEPENDENT
+              key: 'server.daily.messages.tasks_comment_add[{#PUID}]'
+              delay: '0'
+              history: 30d
+              units: '!tasks'
+              preprocessing:
+                -
+                  type: JSONPATH
+                  parameters:
+                    - '$.[?(@.processUniqueId == ''{#PUID}'')].daily.messages.tasks_comment_add'
+                -
+                  type: TRIM
+                  parameters:
+                    - '[]'
+              master_item:
+                key: server.stat.json
+              tags:
+                -
+                  tag: Application
+                  value: push-server
+            -
+              uuid: 473b80ef0d954eb496dc908dececf570
+              name: '{#PUID} Daily messages tasks_task_update'
+              type: DEPENDENT
+              key: 'server.daily.messages.tasks_task_update[{#PUID}]'
+              delay: '0'
+              history: 30d
+              units: '!tasks'
+              preprocessing:
+                -
+                  type: JSONPATH
+                  parameters:
+                    - '$.[?(@.processUniqueId == ''{#PUID}'')].daily.messages.tasks_task_update'
+                -
+                  type: TRIM
+                  parameters:
+                    - '[]'
+              master_item:
+                key: server.stat.json
+              tags:
+                -
+                  tag: Application
+                  value: push-server
+            -
+              uuid: 9c5ae2decf794e159eaef0a036aa947c
+              name: '{#PUID} Daily messages unknown'
+              type: DEPENDENT
+              key: 'server.daily.messages.unknown[{#PUID}]'
+              delay: '0'
+              history: 30d
+              units: '!messages'
+              preprocessing:
+                -
+                  type: JSONPATH
+                  parameters:
+                    - '$.[?(@.processUniqueId == ''{#PUID}'')].daily.messages.unknown'
+                -
+                  type: TRIM
+                  parameters:
+                    - '[]'
+              master_item:
+                key: server.stat.json
+              tags:
+                -
+                  tag: Application
+                  value: push-server
+            -
+              uuid: b4a2eb7580ac47a3b38792cb6584923c
+              name: '{#PUID} Daily requests incoming messages'
+              type: DEPENDENT
+              key: 'server.daily.requests.incoming.messages[{#PUID}]'
+              delay: '0'
+              history: 30d
+              units: '!messages'
+              preprocessing:
+                -
+                  type: JSONPATH
+                  parameters:
+                    - '$.[?(@.processUniqueId == ''{#PUID}'')].daily.requests.incomingMessages'
+                -
+                  type: TRIM
+                  parameters:
+                    - '[]'
+              master_item:
+                key: server.stat.json
+              tags:
+                -
+                  tag: Application
+                  value: push-server
+          master_item:
+            key: server.stat.json
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - '$[:].processUniqueId'
+            -
+              type: JAVASCRIPT
+              parameters:
+                - |
+                  valueObj = JSON.parse(value);
+                  resultArr = [];
+                  
+                  for(puid in valueObj) {
+                    resultArr.push({"{#PUID}": valueObj[puid]});
+                  }
+                  
+                  return JSON.stringify(resultArr);
+          overrides:
+            -
+              name: 'Disable processing for non-control PUIDs'
+              step: '1'
+              filter:
+                conditions:
+                  -
+                    macro: '{#PUID}'
+                    value: '{$RE_CONTROL_PUID}'
+                    operator: NOT_MATCHES_REGEX
+                    formulaid: A
+              operations:
+                -
+                  operationobject: ITEM_PROTOTYPE
+                  operator: LIKE
+                  value: im_startWriting
+                  status: DISABLED
+                  discover: NO_DISCOVER
+                -
+                  operationobject: ITEM_PROTOTYPE
+                  operator: LIKE
+                  value: im_readMessageChatOpponent
+                  status: DISABLED
+                  discover: NO_DISCOVER
+                -
+                  operationobject: ITEM_PROTOTYPE
+                  operator: LIKE
+                  value: im_messageLike
+                  status: DISABLED
+                  discover: NO_DISCOVER
+                -
+                  operationobject: ITEM_PROTOTYPE
+                  operator: LIKE
+                  value: im_messageLike
+                  status: DISABLED
+                  discover: NO_DISCOVER
+                -
+                  operationobject: ITEM_PROTOTYPE
+                  operator: LIKE
+                  value: im_messageUpdate
+                  status: DISABLED
+                  discover: NO_DISCOVER
+                -
+                  operationobject: ITEM_PROTOTYPE
+                  operator: LIKE
+                  value: im_messageChat
+                  status: DISABLED
+                  discover: NO_DISCOVER
+                -
+                  operationobject: ITEM_PROTOTYPE
+                  operator: LIKE
+                  value: main_user_counter
+                  status: DISABLED
+                  discover: NO_DISCOVER
+                -
+                  operationobject: ITEM_PROTOTYPE
+                  operator: LIKE
+                  value: im_chatUserLeave
+                  status: DISABLED
+                  discover: NO_DISCOVER
+                -
+                  operationobject: ITEM_PROTOTYPE
+                  operator: LIKE
+                  value: tasks_comment_add
+                  status: DISABLED
+                  discover: NO_DISCOVER
+                -
+                  operationobject: ITEM_PROTOTYPE
+                  operator: LIKE
+                  value: tasks_task_update
+                  status: DISABLED
+                  discover: NO_DISCOVER
+      macros:
+        -
+          macro: '{$NORM.NUM.PROC}'
+          value: '8'
+        -
+          macro: '{$RE_CONTROL_PUID}'
+          value: (pub-9010|JUST-ANOTHER-CONTROL-PUID)
