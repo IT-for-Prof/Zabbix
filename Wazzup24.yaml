@@ -1,0 +1,127 @@
+zabbix_export:
+  version: '6.0'
+  date: '2025-03-14T17:50:56Z'
+  groups:
+    - uuid: 7df96b18c230490a9a0a9e2307226338
+      name: Templates
+  templates:
+    - uuid: 524b105ae1244e54877d5263deba1fc4
+      template: Wazzup24
+      name: Wazzup24
+      groups:
+        - name: Templates
+      items:
+        - uuid: d06576e5d75d480fba190d8c08a963dd
+          name: 'Get Wazzup Channels Data'
+          type: HTTP_AGENT
+          key: wazzup.raw_data
+          delay: 10m
+          history: 1d
+          trends: '0'
+          value_type: TEXT
+          timeout: 30s
+          url: 'https://api.wazzup24.com/v3/channels'
+          headers:
+            - name: Authorization
+              value: 'Bearer {$API_KEY}'
+          triggers:
+            - uuid: b9a0d04c0e464c4eb091e2bd6a9941cf
+              expression: 'nodata(/Wazzup24/wazzup.raw_data,{$NODATA_DURATION})=1'
+              name: 'Данных от API нет {#NODATA_DURATION}'
+              priority: AVERAGE
+      discovery_rules:
+        - uuid: 1db942f6f17344ce8a3be250e3328bf8
+          name: 'Wazzup Channels Data'
+          type: DEPENDENT
+          key: wazzup.channels.discovery
+          delay: '0'
+          item_prototypes:
+            - uuid: 426b39352a9848d4b0ace8afe816919c
+              name: 'Название: {#NAME} | Тип: {#TRANSPORT} | Номер: {#PLAINID}'
+              type: DEPENDENT
+              key: 'wazzup.channel.state[{#CHANNELID}]'
+              delay: '0'
+              trends: '0'
+              value_type: TEXT
+              preprocessing:
+                - type: JSONPATH
+                  parameters:
+                    - '$[?(@.channelId == ''{#CHANNELID}'')].state.first()'
+              master_item:
+                key: wazzup.raw_data
+              trigger_prototypes:
+                - uuid: 4a3259ec86224b3b97443e2779b33775
+                  expression: 'last(/Wazzup24/wazzup.channel.state[{#CHANNELID}],#1)="foreignphone"'
+                  name: 'Название: {#NAME} | Тип: {#TRANSPORT} | Номер: {#PLAINID} QR отсканирован некорректным аккаунтом'
+                  priority: WARNING
+                - uuid: e275cb39a96546039f69c01485ebc0d0
+                  expression: 'last(/Wazzup24/wazzup.channel.state[{#CHANNELID}],#1)="openelsewhere"'
+                  name: 'Название: {#NAME} | Тип: {#TRANSPORT} | Номер: {#PLAINID} авторизован в другом аккаунте'
+                  priority: WARNING
+                - uuid: 834e7c41e957434bbd356648a98fed4b
+                  expression: 'last(/Wazzup24/wazzup.channel.state[{#CHANNELID}],#1)="blocked"'
+                  name: 'Название: {#NAME} | Тип: {#TRANSPORT} | Номер: {#PLAINID} заблокирован'
+                  priority: WARNING
+                - uuid: 40c9e64764c84bdda377393cb05df5c1
+                  expression: 'last(/Wazzup24/wazzup.channel.state[{#CHANNELID}],#2)="init"'
+                  name: 'Название: {#NAME} | Тип: {#TRANSPORT} | Номер: {#PLAINID} запускается'
+                  priority: WARNING
+                - uuid: af907f2f0e7c42e8ad5920551d236a6c
+                  expression: 'last(/Wazzup24/wazzup.channel.state[{#CHANNELID}],#1)="onModeration"'
+                  name: 'Название: {#NAME} | Тип: {#TRANSPORT} | Номер: {#PLAINID} на модерации'
+                  priority: WARNING
+                - uuid: d072c699afcd41c586fe36c78f83728d
+                  expression: 'last(/Wazzup24/wazzup.channel.state[{#CHANNELID}],#1)="unauthorized"'
+                  name: 'Название: {#NAME} | Тип: {#TRANSPORT} | Номер: {#PLAINID} не авторизован'
+                  priority: WARNING
+                - uuid: 88558a7bbcb843deaeb32dce65996502
+                  expression: 'last(/Wazzup24/wazzup.channel.state[{#CHANNELID}],#1)<>"active"'
+                  name: 'Название: {#NAME} | Тип: {#TRANSPORT} | Номер: {#PLAINID} неактивен'
+                  priority: AVERAGE
+                - uuid: 7c3691a15d1d49a5ab0a261c0bde81c2
+                  expression: 'last(/Wazzup24/wazzup.channel.state[{#CHANNELID}],#1)="notEnoughMoney"'
+                  name: 'Название: {#NAME} | Тип: {#TRANSPORT} | Номер: {#PLAINID} недостаточно средств'
+                  priority: WARNING
+                - uuid: 501c95ba08d64e8fa7cc1ee75b9992f8
+                  expression: 'last(/Wazzup24/wazzup.channel.state[{#CHANNELID}],#1)="phoneUnavailable"'
+                  name: 'Название: {#NAME} | Тип: {#TRANSPORT} | Номер: {#PLAINID} нет связи с телефоном'
+                  priority: WARNING
+                - uuid: 5581302712374e90b519c219f6360263
+                  expression: 'last(/Wazzup24/wazzup.channel.state[{#CHANNELID}],#1)="waitForPassword"'
+                  name: 'Название: {#NAME} | Тип: {#TRANSPORT} | Номер: {#PLAINID} нужно ввести пароль 2FA'
+                  priority: WARNING
+                - uuid: ec20a51567e244f2abc2c4ba25289f24
+                  expression: 'last(/Wazzup24/wazzup.channel.state[{#CHANNELID}],#1)="qridle"'
+                  name: 'Название: {#NAME} | Тип: {#TRANSPORT} | Номер: {#PLAINID} нужно отсканировать QR-код'
+                  priority: WARNING
+                - uuid: ce7bc6909f4e41a2979c24ff42b1472a
+                  expression: 'last(/Wazzup24/wazzup.channel.state[{#CHANNELID}],#1)="rejected"'
+                  name: 'Название: {#NAME} | Тип: {#TRANSPORT} | Номер: {#PLAINID} отклонен'
+                  priority: WARNING
+                - uuid: 6b70931cfebd4b0db2c90f5d8f6de648
+                  expression: 'last(/Wazzup24/wazzup.channel.state[{#CHANNELID}],#1)="disabled"'
+                  name: 'Название: {#NAME} | Тип: {#TRANSPORT} | Номер: {#PLAINID} отключен'
+                  priority: WARNING
+                - uuid: 75dbc3557cd640babbbb821bbb8beb13
+                  expression: 'in(last(/Wazzup24/wazzup.channel.state[{#CHANNELID}],#1),"active","init","disabled","phoneUnavailable","qridle", "openelsewhere","notEnoughMoney","foreignphone","unauthorized","waitForPassword","blocked","onModeration","rejected")<>1'
+                  name: 'Название: {#NAME} | Тип: {#TRANSPORT} | Номер: {#PLAINID} статус не определен'
+                  priority: WARNING
+          master_item:
+            key: wazzup.raw_data
+          lld_macro_paths:
+            - lld_macro: '{#CHANNELID}'
+              path: $.channelId
+            - lld_macro: '{#NAME}'
+              path: $.name
+            - lld_macro: '{#PLAINID}'
+              path: $.plainId
+            - lld_macro: '{#STATE}'
+              path: $.state
+            - lld_macro: '{#TRANSPORT}'
+              path: $.transport
+      macros:
+        - macro: '{$API_KEY}'
+          description: 'Ключ API WazzUp'
+        - macro: '{$NODATA_DURATION}'
+          value: 1d
+          description: 'Время отсутствия данных из API для срабатывания триггера'
